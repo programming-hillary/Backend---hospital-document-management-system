@@ -26,14 +26,26 @@ spring:
     cloud:
         gateway:
             routes:
-            -   id: product-service
+            -   id: authenticator
                 predicates:
-                - Path=/api/product
-                uri: lb://product-service
-            -   id: order-service
+                -  Path=/api/auth
+                uri: lb://authenticator
+            -   id: notifications
                 predicates:
-                - Path=/api/order
-                uri: lb://order-service
+                -  Path=/api/notifications
+                uri: lb://notification
+            -   id: version-control
+                predicates:
+                -  Path=/api/version-control
+                uri: lb://version-control
+            -   id: documents-service
+                predicates:
+                - Path=/api/documents
+                uri: lb://documents-service
+            -   id: searching-service
+                predicates:
+                - Path=/api/searching
+                uri: lb://searching-service
             -   filters:
                 - SetPath=/
                 id: discovery-server
