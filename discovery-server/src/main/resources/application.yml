@@ -1,0 +1,35 @@
+eureka:
+    client:
+        fetch-registry: false
+        register-with-eureka: false
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+    instance:
+        hostname: localhost
+logging:
+    level:
+        org:
+            springframework:
+                security: DEBUG
+    pattern:
+        level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+management:
+    endpoints:
+        web:
+            exposure:
+                include: prometheus
+    tracing:
+        sampling:
+            probability: 1.0
+    zipkin:
+        tracing:
+            endpoint: http://localhost:9411/api/v2/spans
+server:
+    port: 8761
+spring:
+    application:
+        name: discovery-server
+    security:
+        user:
+            name: eureka
+            password: password
