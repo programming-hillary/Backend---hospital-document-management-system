@@ -1,4 +1,4 @@
-package org.mwashi_mwale.document_deletion_service.model;
+package org.mwashi_mwale.authenticator.data.documents;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

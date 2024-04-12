@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.mwashi_mwale.authenticator.data.dto.LoginRequest;
+import org.mwashi_mwale.authenticator.repositories.LoginRepository;
 import org.mwashi_mwale.authenticator.repositories.doctors.DoctorRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -104,7 +105,7 @@ public class SecurityConfig {
                                 return Mono.error(e);
                             }
                         })
-                        .map(request -> new UsernamePasswordAuthenticationToken(request.username(), request.password()))
+                        .map(request -> new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()))
         );
         filter.setRequiresAuthenticationMatcher(pathMatchers(HttpMethod.POST, "/login"));
         filter.setAuthenticationSuccessHandler((webFilterExchange, authentication) -> {
@@ -152,8 +153,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public ReactiveUserDetailsService userDetailsService(DoctorRepository doctors) {
-        return (username) -> doctors.findByUsername(username)
+    public ReactiveUserDetailsService userDetailsService(LoginRepository user) {
+        return (username) -> user.findByUsername(username)
                 .map(u -> User.withUsername(u.getUsername())
                         .password(u.getPassword())
                         .authorities(u.getRoles().toArray(new String[0]))

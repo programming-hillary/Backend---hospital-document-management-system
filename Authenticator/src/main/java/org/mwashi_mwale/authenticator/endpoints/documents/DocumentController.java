@@ -1,13 +1,11 @@
-package org.mwashi_mwale.document_deletion_service.controller;
+package org.mwashi_mwale.authenticator.endpoints.documents;
 
-import org.mwashi_mwale.document_deletion_service.model.DocumentModel;
-import org.mwashi_mwale.document_deletion_service.service.DocumentService;
+import org.mwashi_mwale.authenticator.providers.documents.DocumentService;
+import org.mwashi_mwale.authenticator.data.documents.DocumentModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/document")

@@ -1,14 +1,12 @@
-package org.mwashi_mwale.document_deletion_service.service;
+package org.mwashi_mwale.authenticator.providers.documents;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.mwashi_mwale.document_deletion_service.dto.DocumentRequest;
 import org.mwashi_mwale.document_deletion_service.dto.DocumentResponse;
-import org.mwashi_mwale.document_deletion_service.model.DocumentModel;
-import org.mwashi_mwale.document_deletion_service.repository.DocumentRepository;
+import org.mwashi_mwale.authenticator.data.documents.DocumentModel;
+import org.mwashi_mwale.authenticator.repositories.documents.DocumentRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

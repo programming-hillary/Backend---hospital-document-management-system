@@ -1,7 +1,27 @@
 package org.mwashi_mwale.authenticator.data.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+import org.apache.kafka.common.config.types.Password;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-public record LoginRequest(@NotBlank String username,
-                           @NotBlank String password) {
+import java.util.List;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class LoginRequest {
+    @MongoId
+    private ObjectId id;
+
+    @NotBlank
+    private String username;
+
+    @NotBlank
+    private String password;
+    private List<String> roles;
+    private boolean isActive;
 }

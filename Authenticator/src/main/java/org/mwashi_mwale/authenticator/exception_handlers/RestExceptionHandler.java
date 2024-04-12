@@ -54,7 +54,7 @@ public class RestExceptionHandler implements WebExceptionHandler {
                 e.printStackTrace();
                 return Mono.empty();
             }
-        } else if (ex instanceof PatientNotFoundException) {
+        } else if (ex instanceof UserNotFoundException) {
             exchange.getResponse().setStatusCode(HttpStatus.NOT_FOUND);
 
             // marks the response as complete and forbids writing to it
