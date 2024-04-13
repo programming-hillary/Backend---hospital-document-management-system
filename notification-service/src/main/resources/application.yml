@@ -30,7 +30,7 @@ spring:
                 spring:
                     json:
                         type:
-                            mapping: event:org.mwashi_mwale.OrderPlacedEvent
+                            mapping: event:org.mwashi_mwale.SearchEvent
             value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
         template:
             default-topic: notificationTopic

@@ -26,10 +26,10 @@ spring:
     cloud:
         gateway:
             routes:
-            -   id: authenticator
+            -   id: auth
                 predicates:
                 -  Path=/api/auth
-                uri: lb://authenticator
+                uri: lb://auth
             -   id: notifications
                 predicates:
                 -  Path=/api/notifications
@@ -60,4 +60,4 @@ spring:
         oauth2:
             resourceserver:
                 jwt:
-                    issuer-uri: http://localhost:8080/realms/spring-boot-microservices-realm
+                    issuer-uri: http://localhost:8585/realms/hosdocs_realm

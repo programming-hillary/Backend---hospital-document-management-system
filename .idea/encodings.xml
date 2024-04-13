@@ -2,22 +2,22 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Auth/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Authenticator/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Authenticator/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Document Deletion/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/documents-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/documents-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/notification-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/notification-service/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/searching_service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/searching_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/searching-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/searching-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/version_control_service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/version_control_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/version-control-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/version-control-service/src/main/resources" charset="UTF-8" />
   </component>
 </project>

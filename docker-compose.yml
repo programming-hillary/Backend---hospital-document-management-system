@@ -7,11 +7,11 @@ services:
     image: postgres
     environment:
       POSTGRES_DB: search-service
-      POSTGRES_USER: mwashi_mwale
+      POSTGRES_USER: mwashimwale
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - ./postgres-order:/data/postgres
+      - ./postgres-search:/data/postgres
     expose:
       - "5431"
     ports:
@@ -23,12 +23,12 @@ services:
     container_name: postgres-version-control
     image: postgres
     environment:
-      POSTGRES_DB: version_control_service
-      POSTGRES_USER: mwashi_mwale
+      POSTGRES_DB: version-control-service
+      POSTGRES_USER: mwashimwale
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - ./postgres-inventory:/data/postgres
+      - ./postgres-version-control:/data/postgres
     ports:
       - "5432:5432"
     restart: always
@@ -134,10 +134,10 @@ services:
       - discovery-server
       - keycloak
 
-  ## Product-Service Docker Compose Config
-  documents_service:
-    container_name: document_deletion_service
-    image: hosdocs/documents_service:latest
+  ## Auth-Service Docker Compose Config
+  auth-service:
+    container_name: auth-service
+    image: hosdocs/auth-service:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
@@ -145,29 +145,42 @@ services:
       - discovery-server
       - api-gateway
 
-  ## Order-Service Docker Compose Config
-  searching_service:
-    container_name: searching_service
-    image: hosdocs/searching_service:latest
+
+
+  ## Document-Service Docker Compose Config
+  documents-service:
+    container_name: documents-service
+    image: hosdocs/documents-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## Search-Service Docker Compose Config
+  searching-service:
+    container_name: searching-service
+    image: hosdocs/searching-service:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-search:5431/searching_service
     depends_on:
-      - postgres-order
+      - postgres-search
       - broker
       - zipkin
       - discovery-server
       - api-gateway
 
-  ## Inventory-Service Docker Compose Config
-  version_control_service:
-    container_name: version_control_service
-    image: hosdocs/version_control_service:latest
+  ## Version-Control-Service Docker Compose Config
+  version-control-service:
+    container_name: version-control-service
+    image: hosdocs/version-control-service:latest
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-version-control:5432version_control_service/
     depends_on:
-      - postgres-inventory
+      - postgres-version-control
       - discovery-server
       - api-gateway
 
