@@ -1,1 +1,1 @@
-http://localhost:8080/realms/hosdocs_realm
+http://localhost:4200/realms/hosdocs-microservices-realm
