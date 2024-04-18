@@ -48,14 +48,12 @@ server:
 spring:
     application:
         name: searching_service
-    datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        password: mysql
-        url: jdbc:mysql://localhost:3306/searching-service
-        username: root
-    jpa:
-        hibernate:
-            ddl-auto: update
+    data:
+    mongodb:
+        host: localhost
+        port: 27017
+        grid-fs-database: images
+        database: searching-service
     kafka:
         bootstrap-servers: localhost:9092
         producer:

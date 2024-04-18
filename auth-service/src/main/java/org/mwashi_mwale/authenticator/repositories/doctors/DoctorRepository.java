@@ -6,17 +6,13 @@
 package org.mwashi_mwale.authenticator.repositories.doctors;
 
 
-import com.mongodb.client.result.DeleteResult;
 import org.bson.types.ObjectId;
 import org.mwashi_mwale.authenticator.data.documents.Doctor;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import reactor.core.publisher.Flux;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.query;
-
+@Repository
 public interface DoctorRepository extends ReactiveMongoRepository<Doctor, ObjectId> {
 
     public Mono<Doctor> findByUsername(String username);

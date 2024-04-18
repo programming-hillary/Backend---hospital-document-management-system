@@ -5,20 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
-@Entity
-@Table(name = "searches")
+@Document(value = "searches_doc")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private ObjectId id;
     private String searchIndex;
-    @OneToMany(cascade = CascadeType.ALL)
     private List<Searchitems> searchitems;
 }

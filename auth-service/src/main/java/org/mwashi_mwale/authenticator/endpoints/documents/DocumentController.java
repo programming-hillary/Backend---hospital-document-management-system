@@ -1,5 +1,6 @@
 package org.mwashi_mwale.authenticator.endpoints.documents;
 
+import org.mwashi_mwale.authenticator.data.dto.DocumentDTO;
 import org.mwashi_mwale.authenticator.providers.documents.DocumentService;
 import org.mwashi_mwale.authenticator.data.documents.DocumentModel;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class DocumentController {
     @DeleteMapping("/{id}")
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.CREATED)
-    public void deleteDocument(@PathVariable("id") Long id, @RequestBody DocumentModel documentRequest) {
-        documentService.deleteDocument(documentRequest);
+    public void deleteDocument(@PathVariable("id") Long id, @RequestBody DocumentDTO documentDTO) {
+        documentService.deleteDocument(documentDTO);
     }
 }

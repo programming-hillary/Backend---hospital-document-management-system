@@ -21,11 +21,9 @@ server:
 spring:
     application:
         name: version-control-service
-    datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        password: mysql
-        url: jdbc:mysql://localhost:3306/version-control-service
-        username: root
-    jpa:
-        hibernate:
-            ddl-auto: update
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+            grid-fs-database: images
+            database: version-control

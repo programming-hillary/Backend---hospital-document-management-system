@@ -29,6 +29,12 @@ server:
 spring:
     application:
         name: discovery-server
+    data:
+        mongodb:
+            database: auth-database
+            host: localhost
+            port: 27017
+            grid-fs-database: images
     security:
         user:
             name: eureka

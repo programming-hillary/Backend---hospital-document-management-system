@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 @Slf4j
 public class SearchService {
@@ -31,6 +30,13 @@ public class SearchService {
     private final WebClient.Builder webClientBuilder;
     private final ObservationRegistry observationRegistry;
     private final ApplicationEventPublisher applicationEventPublisher;
+
+    public SearchService(SearchRepository searchRepository, WebClient.Builder webClientBuilder, ObservationRegistry observationRegistry, ApplicationEventPublisher applicationEventPublisher) {
+        this.searchRepository = searchRepository;
+        this.webClientBuilder = webClientBuilder;
+        this.observationRegistry = observationRegistry;
+        this.applicationEventPublisher = applicationEventPublisher;
+    }
 
     public String makeSearch(SearchRequest searchRequest) {
         SearchModel searchModel = new SearchModel();

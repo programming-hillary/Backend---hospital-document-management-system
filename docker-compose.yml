@@ -2,36 +2,27 @@
 version: '3.7'
 services:
   ## MySQL Docker Compose Config
-  mysql-search:
-    container_name: mysql-search
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mysql-search
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-    volumes:
-      - ./mysql_search_data:/var/lib/mysql
+  mongo-search:
+    container_name: mongo-search
+    image: mongo:4.4.14-rc0-focal
+    restart: always
+    ports:
+      - "27019:27019"
     expose:
-      - "3306"
-    ports:
-      - "3306:3306"
-    command: -p 3306
-    restart: always
-
-  mysql-version-control:
-    container_name: mysql-version-control
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mysql-version-control
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      - "27019"
     volumes:
-      - ./mysql_version-control_data:/var/lib/mysql
-    ports:
-      - "3307:3307"
+      - ./mongo-search-data:/search-data-data/db
+
+  mongo-version-control:
+    container_name: mongo-version-control
+    image: mongo:4.4.14-rc0-focal
     restart: always
+    ports:
+      - "27018:27018"
+    expose:
+      - "27018"
+    volumes:
+      - ./mongo-version-control-data:/version-control-data/db
 
   ## Mongo Docker Compose Config
   mongo:
@@ -54,7 +45,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: keycloak
-      MYSQL_USER: root
+      MYSQL_USER: keycloak
       MYSQL_PASSWORD: password
 
   keycloak:
@@ -166,7 +157,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-search:3306/searching_service
     depends_on:
-      - mysql-search
+      - mongo-search
       - broker
       - zipkin
       - discovery-server
@@ -180,7 +171,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-version-control:5432version_control_service/
     depends_on:
-      - mysql-version-control
+      - mongo-version-control
       - discovery-server
       - api-gateway
 

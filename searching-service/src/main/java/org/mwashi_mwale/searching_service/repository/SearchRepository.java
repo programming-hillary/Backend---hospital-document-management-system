@@ -1,7 +1,9 @@
 package org.mwashi_mwale.searching_service.repository;
 
 import org.mwashi_mwale.searching_service.model.SearchModel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface SearchRepository extends JpaRepository<SearchModel, Long> {
+@Repository
+public interface SearchRepository extends MongoRepository<SearchModel, Long> {
 }

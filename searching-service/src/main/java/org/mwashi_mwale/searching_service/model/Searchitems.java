@@ -5,20 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "search_items")
+@Document(value = "searchItems_doc")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Searchitems {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private ObjectId id;
     private String editor;
     private String comment;
     private LocalDateTime date;

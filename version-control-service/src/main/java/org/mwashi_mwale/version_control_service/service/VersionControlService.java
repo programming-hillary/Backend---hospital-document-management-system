@@ -12,11 +12,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class VersionControlService {
 
     private final VersionControlRepository versionControlRepository;
+
+    public VersionControlService(VersionControlRepository versionControlRepository) {
+        this.versionControlRepository = versionControlRepository;
+    }
 
     @Transactional(readOnly = true)
     @SneakyThrows

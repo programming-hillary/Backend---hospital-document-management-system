@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "product")
+@Document(value = "documents_doc")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "product")
+@Document(value = "documents_doc")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,4 +21,5 @@ public class DocumentModel {
     private String format;
     private String category;
     private String builder_category;
+    private String uploadDir;
 }

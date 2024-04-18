@@ -2,7 +2,6 @@ package org.mwashi_mwale.authenticator.data.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.apache.kafka.common.config.types.Password;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 

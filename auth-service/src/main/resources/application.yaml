@@ -8,6 +8,11 @@ spring:
       default-property-inclusion: non_null
       serialization:
         indent-output: true
+  security:
+    user:
+      name: user # Default user name.
+      password: pass # Password
+      roles: admin,owner # A comma separated list of roles
   application:
     name: auth-service
   main:
